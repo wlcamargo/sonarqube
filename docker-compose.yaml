@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  sonarqube:
+    image: sonarqube:lts-community
+    depends_on:
+      - db-sonar
+    networks:
+      - sonar_net
+    environment:
+      SONAR_JDBC_URL: jdbc:postgresql://db-sonar:5432/sonar
+      SONAR_JDBC_USERNAME: sonar
+      SONAR_JDBC_PASSWORD: sonar
+    ports:
+      - "9077:9000"
+    volumes:
+      - sonar_data:/opt/sonarqube/data
+      - sonar_logs:/opt/sonarqube/logs
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  db-sonar:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: sonar
+      POSTGRES_PASSWORD: sonar
+      POSTGRES_DB: sonar
+    networks:
+      - sonar_net
+    ports:
+      - 5497:5432
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+networks:
+  sonar_net:
+    driver: bridge
+
+volumes:
+  sonar_data:
+  sonar_logs:
+  db_data:
