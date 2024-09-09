@@ -28,6 +28,12 @@ Execute o comando para baixar imagens e rodar containers
 sudo docker compose up -d
 ```
 
+## Warning 
+Caso tenha problemas com a memória do container do Sonarqube, execute o comando abaixo:
+```
+vm.max_map_count=262144
+```
+
 ## Como acessar?
 localhost:9077
 
