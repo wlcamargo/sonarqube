@@ -35,7 +35,7 @@ sudo docker compose up -d
 ## Warning 
 Caso tenha problemas com a memória do container do Sonarqube, execute o comando abaixo:
 ```
-vm.max_map_count=262144
+sudo sysctl -w vm.max_map_count=262144
 ```
 
 ## Como acessar?
