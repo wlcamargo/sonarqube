@@ -12,6 +12,10 @@ O Sonarqube é uma ferramenta utilizada para verificação de códigos.
 ### Instalação do Docker
 https://www.youtube.com/watch?v=pRFzDVn40rw&list=PLbPvnlmz6e_L_3Zw_fGtMcMY0eAOZnN-H
 
+## Link Vídeo Tutorial
+https://www.youtube.com/watch?v=HTHG5gu88M4
+
+
 ## Como baixar o projeto?
 ```
 git clone https://github.com/wlcamargo/sonarqube
@@ -63,14 +67,14 @@ ip a | grep etho
 
 ## Comando para realizar o check
 ```
-docker run --rm -e SONAR_HOST_URL="http://<Seu-Host>:9077" \ # Adicione o teu host
-    -v "/home/wallace/docker/sonarqube:/usr/src" \ # Altera para a pasta de que deseja fazer o scan
+docker run --rm -e SONAR_HOST_URL="http://172.21.121.140:9077" \ 
+    -v "/home/wallace/docker/sonarqube:/usr/src" \
     sonarsource/sonar-scanner-cli \
-    -Dsonar.projectKey=gambiarra \ # Altere o nome do projeto
+    -Dsonar.projectKey=youtube \ 
     -Dsonar.sources=. \
-    -Dsonar.host.url=http://<Seu-Host>:9077 \ # Adicione o teu host
-    -Dsonar.language=py \ # Altere a linguagem se necessário
-    -Dsonar.login=<Seu-Token> #Adicione o Token
+    -Dsonar.host.url=http://172.21.121.140:9077 \
+    -Dsonar.language=py \
+    -Dsonar.login=sqp_4ef2ece4abcace99b8ac33c43bbbc48e7713b2f1
 ```
 
 ### Sobre o teste realizado
